@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "title": "Educast Page Header",
+  "name": "educast-blocks/page-header",
+  "category": "text",
+  "description": "Addsi inner page header",
+  "keywords": [],
+  "version": "1",
+  "textdomain": "educast-blocks",
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "showCategory": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

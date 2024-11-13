@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "title": "Educast Search Form",
+  "name": "educast-blocks/search-form",
+  "category": "widgets",
+  "description": "Adds a search form",
+  "keywords": [],
+  "version": "1",
+  "textdomain": "educast-blocks",
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "attributes": {
+    "formColor": {
+      "type": "string",
+      "default": "#f87171"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "Search Something..."
+    }
+  }
+}
+

@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "educast-blocks/auth-modal",
+    "title": "Authentication Modal",
+    "icon": "login",
+    "category": "text",
+    "description": "Adds an authentication modal",
+    "textdomain": "educast-blocks",
+    "attributes": {
+        "showRegister": {
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "editorScript": "file:./index.js",
+    "viewScript": "file:./frontend.js",
+    "style": "file:./index.css"
+}
