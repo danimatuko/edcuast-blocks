@@ -39,7 +39,7 @@ function educast_blocks_signup($request)
 
     $user_id = wp_insert_user([
         'user_login' => $username,
-        'user_password' => $password,
+        'user_pass'  => $password,  // Use 'user_pass' for password
         'user_email' => $email
     ]);
 

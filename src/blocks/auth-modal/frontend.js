@@ -1,4 +1,4 @@
-import { submitSignupForm } from './formHandler';
+import { submitSignupForm, submitSigninForm } from './formHandler';
 
 document.addEventListener('DOMContentLoaded', () => {
     const modalTriggers = document.querySelectorAll('.open-modal');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to show success or error messages
     const showMessage = (message, isSuccess = true) => {
-        const signupStatusDiv = signupForm.querySelector('#signup-status');
+        const signupStatusDiv = document.querySelector('#auth-status');
         const messageHTML = `
             <div class="mb-4 text-white p-5 ${isSuccess ? 'bg-green-500' : 'bg-red-500'} rounded">
                  ${message}
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Handle signup form submission
-    signupForm.addEventListener('submit', (event) => {
+    signupForm?.addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent the form from submitting normally
 
         // Extract form data
@@ -81,4 +81,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 showMessage(error.message || 'An unexpected error occurred.', false);
             });
     });
+
+
+    // Handle signup form submission
+    signinForm?.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Extract form data
+        const data = {
+            username: document.getElementById('si-email').value,
+            password: document.getElementById('si-password').value
+        };
+
+        // Call the form handling function with the extracted data
+        submitSigninForm(data)
+            .then(response => {
+                // Show success message if the response indicates success
+                showMessage(response.message, response.success);
+
+                // Reset the form if signup was successful
+                if (response.success) {
+                    signinForm.reset();
+                    location.reload();
+                }
+            })
+            .catch(error => {
+                // Display an error message if the request fails
+                showMessage(error.message || 'An unexpected error occurred.', false);
+            });
+    });
+
 });
+

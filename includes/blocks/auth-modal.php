@@ -2,9 +2,11 @@
 
 function educast_auth_modal_render_cb($atts)
 {
+    if (is_user_logged_in()) return;
+
     $showRegister = $atts['showRegister'];
     ob_start();
-    ?>
+?>
 
     <div class="wp-block-udemy-plus-auth-modal">
         <div class="modal-container">
@@ -24,16 +26,16 @@ function educast_auth_modal_render_cb($atts)
                     <?php endif; ?>
                 </ul>
 
+                <div id="auth-status"></div>
                 <div class="modal-body">
                     <!-- Login Form -->
                     <form id="signin-tab" style="display: block;" method="POST">
-                        <div id="signin-status"></div>
                         <fieldset>
                             <label for="si-email">Name/Email</label>
-                            <input type="email" id="si-email" name="email" placeholder="johndoe@example.com" required />
+                            <input type="text" id="si-email" name="email" placeholder="johndoe@example.com" required />
 
                             <label for="si-password">Password</label>
-                            <input type="password" id="si-password" name="password" minlength="6" required placeholder=" "/>
+                            <input type="password" id="si-password" name="password" required placeholder=" " />
 
                             <button type="submit">Sign in</button>
                         </fieldset>
@@ -42,7 +44,6 @@ function educast_auth_modal_render_cb($atts)
                     <?php if ($showRegister) : ?>
                         <!-- Register Form -->
                         <form id="signup-tab" method="POST">
-                            <div id="signup-status"></div>
                             <fieldset>
                                 <label for="su-name">Full name</label>
                                 <input type="text" id="su-name" name="name" placeholder="John Doe" required />
@@ -51,7 +52,7 @@ function educast_auth_modal_render_cb($atts)
                                 <input type="email" id="su-email" name="email" placeholder="johndoe@example.com" required />
 
                                 <label for="su-password">Password</label>
-                                <input type="password" id="su-password" name="password" minlength="6" required placeholder=" "/>
+                                <input type="password" id="su-password" name="password" minlength="6" required placeholder=" " />
 
                                 <button type="submit">Sign up</button>
                             </fieldset>
@@ -63,8 +64,6 @@ function educast_auth_modal_render_cb($atts)
     </div>
 
 <?php
-        return ob_get_clean();
+    return ob_get_clean();
 }
 ?>
-
-
